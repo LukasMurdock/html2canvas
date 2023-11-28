@@ -43,6 +43,7 @@ import {listStyleType} from './property-descriptors/list-style-type';
 import {marginBottom, marginLeft, marginRight, marginTop} from './property-descriptors/margin';
 import {overflow, OVERFLOW} from './property-descriptors/overflow';
 import {overflowWrap} from './property-descriptors/overflow-wrap';
+import {objectFit} from './property-descriptors/object-fit';
 import {paddingBottom, paddingLeft, paddingRight, paddingTop} from './property-descriptors/padding';
 import {textAlign} from './property-descriptors/text-align';
 import {position, POSITION} from './property-descriptors/position';
@@ -126,6 +127,7 @@ export class CSSParsedDeclaration {
     marginRight: CSSValue;
     marginBottom: CSSValue;
     marginLeft: CSSValue;
+    objectFit: ReturnType<typeof objectFit.parse>;
     opacity: ReturnType<typeof opacity.parse>;
     overflowX: OVERFLOW;
     overflowY: OVERFLOW;
@@ -199,6 +201,7 @@ export class CSSParsedDeclaration {
         this.overflowX = overflowTuple[0];
         this.overflowY = overflowTuple[overflowTuple.length > 1 ? 1 : 0];
         this.overflowWrap = parse(context, overflowWrap, declaration.overflowWrap);
+        this.objectFit = parse(context, objectFit, declaration.objectFit);
         this.paddingTop = parse(context, paddingTop, declaration.paddingTop);
         this.paddingRight = parse(context, paddingRight, declaration.paddingRight);
         this.paddingBottom = parse(context, paddingBottom, declaration.paddingBottom);
